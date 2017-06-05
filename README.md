@@ -4,4 +4,4 @@
 TODO
 
 ## hub
-TODO
+Labs and workshop materials for everything having to do with IoT gateways and hubs is packaged [here](https://github.com/acbodine/iot/tree/master/hub)
