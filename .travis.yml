@@ -1,0 +1,19 @@
+branches:
+  only:
+    - master
+
+sudo: required
+
+services:
+  - docker
+
+# before_install:
+#   - sudo apt-get -qq update
+#   - sudo apt-get -qq install -y jq
+
+script:
+  - echo "TODO"
+#  - docker build --force-rm -t acbodine/iot-hub .
+
+after_success:
+  # - TODO: Do something neat!
