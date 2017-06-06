@@ -1,7 +1,6 @@
 package local_test
 
-import(
-    "fmt"
+import (
     "sync"
     "testing"
     "time"

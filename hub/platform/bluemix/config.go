@@ -20,7 +20,7 @@ func ConfigFromEnvironment() (*Config) {
     c.OrgId        = os.Getenv("WATSON_IOT_ORGID")
     c.TypeId       = os.Getenv("WATSON_IOT_TYPEID")
     c.DeviceId     = os.Getenv("WATSON_IOT_DEVICEID")
-    c.AuthToken    = os.Getenv("WATSON_IO_AUTHTOKEN")
+    c.AuthToken    = os.Getenv("WATSON_IOT_AUTHTOKEN")
 
     return c
 }

@@ -1,6 +1,7 @@
 package bluemix
 
 import (
+    "fmt"
     "sync"
 
     "github.com/acbodine/iot/hub/event"
@@ -49,6 +50,35 @@ func (p *platform) Unregister(e event.Eventer) error {
 
 // Implement the platform.Platformer interface.
 func (p *platform) Pump(ledger chan *event.Event) error {
+    p.Add(1)
+
+    go func () {
+        defer p.Done()
+
+        for {
+            select {
+            case evt, ok := <- p.events:
+
+                // If we received an Event, send to ledger.
+                if evt != nil && ledger != nil {
+                    ledger <- evt
+                }
+
+                // If we received an Event, send to Bluemix.
+                if err := p.client.Publish(evt.Payload()); err != nil {
+                    // TODO: Implement circuit breaker pattern.
+                    fmt.Println("Failed to published event payload:", err)
+                    return
+                }
+
+                // If the channel closed, then we are done pumping.
+                if !ok {
+                    return
+                }
+            }
+        }
+    }()
+
     return nil
 }
 

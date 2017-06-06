@@ -1,6 +1,8 @@
 # hub
 
-## Platformers
+## Overview
+
+### Platformers
 
 Platformers take care of shipping data of interest from Eventers to various
 hosted IoT platforms. This class serves to abstract the specifics of data
@@ -12,7 +14,7 @@ TODO
 #### Bluemix
 TODO
 
-## Eventers
+### Eventers
 
 Eventers have the role of aggregating data from various IoT devices and making
 it available in an orderly manner to the Platformers. This should be treated
@@ -22,3 +24,12 @@ type of event you want to capture at the hub.
 #### Local
 - Mock
 - Memory
+
+## Build
+
+Raspberry Pi3
+```
+$ export GOOS=linux
+$ export GOARCH=arm
+$ go build -o hub/hub github.com/acbodine/iot/hub
+```

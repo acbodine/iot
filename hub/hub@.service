@@ -1,0 +1,20 @@
+[Unit]
+Description=IoT Hub
+
+[Service]
+Restart=always
+RestartSec=30
+# Environment='key=value'
+EnvironmentFile=/opt/iot/hub.env
+
+# In case host crashed, any cleanup?
+# ExecStartPre=-/usr/bin/docker rm -f %i
+
+ExecStart=/opt/iot/hub
+
+# If you want to be able to `systemctl stop`
+# ExecStop=
+# ExecStopPost=
+
+[Install]
+WantedBy=multi-user.target

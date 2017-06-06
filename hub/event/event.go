@@ -18,6 +18,10 @@ func New(p []byte, t time.Time) *Event {
     }
 }
 
+func (e *Event) Payload() []byte {
+    return e.payload
+}
+
 type Eventer interface {
 
     // Emit provides a starting function for the underlying

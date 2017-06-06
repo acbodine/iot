@@ -1,2 +1,8 @@
+# OSX
+.DS_Store
+
 # Environment files
-*.env
+**/*.env
+
+# Build artifacts
+hub/hub
