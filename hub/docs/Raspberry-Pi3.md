@@ -2,7 +2,12 @@
 
 This is a collection of generic steps you probably want to take with your Raspberry Pi3.
 
-### Disable power management on your Realtek 8192cu WiFi chip.
+## Realtek 8192cu WiFi Chip
+
+### Enable WiFi service interrupt tolerance
+TODO: Add steps to allow a Raspberry Pi to tolerate WiFi service interrups.
+
+### Disable sleep/suspend/hibernate
 
 First, check the built-in/current power management setting for your chip:
 ```
