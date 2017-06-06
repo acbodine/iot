@@ -19,6 +19,7 @@ func main() {
     }
 
     pumped := make(chan *event.Event)
+    defer close(pumped)
 
     // Tell Platformer to start pumping Events.
     if err = platformer.Pump(pumped); err != nil {

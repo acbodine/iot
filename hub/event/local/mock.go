@@ -35,17 +35,19 @@ func (m *mock) Emit(events chan *event.Event) error {
     go func () {
         defer m.Done()
 
-        for {
-            timeout := time.After(m.timeout)
+        var timer *time.Timer = time.NewTimer(m.timeout)
 
+        for {
             select {
 
             case <- m.terminate:
                 return
 
-            case <- timeout:
+            case <- timer.C:
                 m.events <- event.New([]byte(""), time.Now())
             }
+
+            timer.Reset(m.timeout)
         }
     }()
 
@@ -53,7 +55,9 @@ func (m *mock) Emit(events chan *event.Event) error {
 }
 
 func (m *mock) Terminate() error {
+    defer close(m.terminate)
     m.terminate <- true
+
     m.Wait()
 
     m.events = nil

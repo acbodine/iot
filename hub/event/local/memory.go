@@ -50,15 +50,15 @@ func (m *memory) Emit(events chan *event.Event) error {
 func (m *memory) emit() {
     defer m.Done()
 
-    for {
-        timeout := time.After(m.timeout)
+    var timer *time.Timer = time.NewTimer(m.timeout)
 
+    for {
         select {
 
         case <- m.terminate:
             return
 
-        case <- timeout:
+        case <- timer.C:
             runtime.ReadMemStats(m.stats)
 
             mem := map[string]interface{}{
@@ -82,12 +82,16 @@ func (m *memory) emit() {
             break
 
         }
+
+        timer.Reset(m.timeout)
     }
 }
 
 // Implement the event.Eventer interface.
 func (m *memory) Terminate() error {
+    defer close(m.terminate)
     m.terminate <- true
+
     m.Wait()
 
     m.events = nil
