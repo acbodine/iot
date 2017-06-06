@@ -31,7 +31,7 @@ func main() {
     }()
 
     // Create a MemoryEventer, and register with Platformer.
-    eventer := local.MemoryEventer(time.Second * 10)
+    eventer := local.MemoryEventer(time.Minute)
     if err = platformer.Register(eventer); err != nil {
         panic(err)
     }
