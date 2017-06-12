@@ -5,7 +5,7 @@ This is a collection of generic steps you probably want to take with your Raspbe
 ## Realtek 8192cu WiFi Chip
 
 ### Enable WiFi service interrupt tolerance
-TODO: Add steps to allow a Raspberry Pi to tolerate WiFi service interrups.
+TODO: Add steps to allow a Raspberry Pi to tolerate WiFi service interrupts.
 
 ### Disable sleep/suspend/hibernate
 

@@ -12,7 +12,7 @@ import (
 
 func TestLocalPlatformer(t *testing.T) {
 
-    // Get an local Platformer.
+    // Get a local Platformer.
     p, err := platform.Factory(platform.Local)
     if err != nil {
         t.Fatal(err)
